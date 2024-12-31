@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Get Predictions from the Model</h1>
+    <form action="/predict" method="post">
+        <div class="form-group">
+            <label for="rainfall">Rainfall (in mm):</label>
+            <input type="number" id="rainfall" name="rainfall" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="soilQuality">Soil Quality Index (1 to 10):</label>
+            <input type="number" id="soilQuality" name="soilQuality" min="1" max="10" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="farmSize">Farm Size (in hectares):</label>
+            <input type="number" id="farmSize" name="farmSize" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="sunlightHours">Sunlight Hours:</label>
+            <input type="number" id="sunlightHours" name="sunlightHours" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="fertilizer">Fertilizer (in kg):</label>
+            <input type="number" id="fertilizer" name="fertilizer" required>
+        </div>
+        
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction_text %}
+    <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>
